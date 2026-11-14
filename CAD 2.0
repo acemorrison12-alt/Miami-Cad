@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101319"><title>Miami CAD | Florida Roleplay</title>
+<style>
+:root{--bg:#0e1117;--panel:#171c25;--panel2:#202735;--line:#303a4a;--text:#f4f6fa;--muted:#a2adbd;--blue:#3988ff;--green:#38c98a;--amber:#f0b64b;--red:#ef6b72}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#25334c 0,#111722 45%,#0c0f14 100%);color:var(--text);font:15px/1.45 Inter,system-ui,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;color:var(--text);background:#252e3d;border:1px solid var(--line);border-radius:9px;padding:9px 13px}button:hover{filter:brightness(1.13)}button.primary{background:var(--blue);border-color:var(--blue);font-weight:750}button.danger{background:#44242b;border-color:#783c45}button.ghost{background:transparent}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:12px}.tag{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:30px;padding:3px 8px;font-size:11px;color:var(--muted)}.tag.green{color:var(--green);border-color:#28694f}.tag.amber{color:var(--amber);border-color:#725a2d}.tag.red{color:var(--red);border-color:#71383d}
+header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#10151eeb;border-bottom:1px solid #303a4a;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:850}.header-right{display:flex;align-items:center;gap:10px}.notice{border:1px solid #66542e;background:#2b2519;color:#e8c981;padding:11px 13px;border-radius:9px;font-size:12px;margin:12px 0}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:12px;color:#b6c0ce;font-weight:750}.field input,.field select,.field textarea,.search{width:100%;background:#10151d;border:1px solid #364254;border-radius:8px;padding:10px;color:var(--text);outline:none}.field textarea{min-height:90px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:var(--blue)}.main{max-width:1600px;margin:auto;padding:24px}.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px}.page-head h1{font-size:25px;margin:0 0 4px}.page-head p{margin:0;color:var(--muted)}
+/* department chooser */
+#departmentScreen{padding-top:20px}.chooser{border:1px solid #303b4b;border-radius:24px;background:linear-gradient(145deg,#151b25ee,#10141bee);padding:20px;box-shadow:0 22px 65px #0006}.chooser-title{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-size:24px}.chooser-title:before{content:"";width:6px;height:32px;border-radius:8px;background:var(--blue)}.dept-layout{display:grid;grid-template-columns:1fr 1fr 1.08fr 1fr 1fr;gap:14px;min-height:490px}.dept-card{position:relative;overflow:hidden;min-height:490px;text-align:left;padding:19px 18px;border:1px solid #394456;border-radius:19px;background:linear-gradient(155deg,#242e3d,#111722 70%);display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;transition:.18s}.dept-card:hover{transform:translateY(-3px);border-color:#76a8ff;box-shadow:0 12px 35px #0008}.dept-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b101b05 0%,#0b101b10 40%,#0b101bc9 100%);z-index:1}.dept-card .copy{position:relative;z-index:2}.dept-card h2{font-size:22px;margin:0 0 7px;line-height:1.15}.dept-card p{margin:0;color:#bdc6d4;max-width:270px}.dept-card .enter{display:inline-block;margin-top:18px;font-weight:800}.dept-stack{display:grid;grid-template-rows:repeat(4,1fr);gap:12px}.dept-mini{position:relative;overflow:hidden;text-align:left;border:1px solid #394456;border-radius:17px;padding:14px 15px;background:linear-gradient(120deg,#222c3b,#131923);display:flex;flex-direction:column;justify-content:center;min-height:0}.dept-mini:hover{border-color:#76a8ff}.dept-mini>div{position:relative;z-index:2;max-width:75%}.dept-mini h3{margin:0 0 4px;font-size:17px}.dept-mini p{margin:0;color:#aeb9c9;font-size:13px}.dept-mini .lock{margin-top:8px;font-size:11px;color:#b9c3d1}.chooser-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:14px}.quick-link{flex:1;text-align:left;background:#111722;border:1px solid #394456;border-left:4px solid var(--blue);padding:13px 16px;border-radius:13px}.radio-toggle{border-radius:30px;padding:13px 17px;background:#111722}.radio-dot{display:inline-block;width:9px;height:9px;background:#657184;border-radius:50%;margin-left:7px}.radio-toggle.on .radio-dot{background:var(--green);box-shadow:0 0 12px var(--green)}
+/* app */
+.shell{display:flex;min-height:calc(100vh - 68px)}aside{width:224px;flex-shrink:0;padding:17px 12px;background:#111720;border-right:1px solid var(--line)}.nav-label{font-size:10px;color:#7f8da0;letter-spacing:1.5px;font-weight:850;padding:14px 10px 7px}.nav{width:100%;display:flex;gap:11px;align-items:center;text-align:left;background:transparent;border:0;color:#b4bfce;margin:2px 0;padding:11px;border-radius:9px}.nav.active,.nav:hover{background:#263246;color:white}.nav .ico{width:20px;text-align:center}.main-app{padding:24px;width:calc(100% - 224px);max-width:1500px;margin:0 auto}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:linear-gradient(145deg,#1a202b,#151a23);border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}.span-3{grid-column:span 3}.stat-label{font-size:11px;color:var(--muted);letter-spacing:.7px;font-weight:800}.stat{font-size:29px;font-weight:850;margin:7px 0}.card h3{font-size:15px;margin:0 0 13px}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.toolbar .search{max-width:280px}.empty{padding:26px 15px;text-align:center;color:var(--muted)}.empty strong{display:block;color:#dce3ed;margin-bottom:4px}.unit-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;background:#111720;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}.unit-name{font-weight:800}.unit-meta{font-size:12px;color:var(--muted)}.tag.status{margin-top:7px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:#8996a8;font-size:10px;text-transform:uppercase;letter-spacing:.7px;padding:10px;border-bottom:1px solid var(--line)}td{padding:11px 10px;border-bottom:1px solid #29313e;vertical-align:middle}tr:last-child td{border:0}.quick{display:flex;gap:8px;flex-wrap:wrap}.quick button{flex:1;min-width:130px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.form-grid .wide{grid-column:1/-1}.modal-back{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:15px;z-index:20}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:#1a202b;border:1px solid #46536a;border-radius:16px;padding:20px;box-shadow:0 20px 80px #0009}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modal-head h2{margin:0}.toast{position:fixed;right:20px;bottom:20px;background:#253247;border:1px solid #50627e;padding:12px 16px;border-radius:10px;z-index:30;box-shadow:0 8px 30px #0008}.section-note{font-size:12px;color:var(--muted);margin:8px 0 0}
+
+/* Florida Civilian ID Card Styling */
+.fl-id-card{background:linear-gradient(135deg,#e8f1f8 0%,#d2e4f3 45%,#f7e7ce 100%);color:#102338;border-radius:16px;border:2px solid #8eb4d6;box-shadow:0 14px 35px #0008;overflow:hidden;position:relative;font-family:Inter,system-ui,sans-serif}
+.fl-id-header{background:linear-gradient(90deg,#123a63,#1e5b94);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #e09f3e}
+.fl-id-header .state{font-weight:900;font-size:17px;letter-spacing:2px;display:flex;align-items:center;gap:8px}
+.fl-id-header .sub{font-size:10px;letter-spacing:1.2px;font-weight:700;color:#ffd180;text-transform:uppercase}
+.fl-id-body{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 16px;position:relative}
+.fl-id-photo{width:110px;height:132px;background:linear-gradient(180deg,#b7cde0,#8ba8c4);border:2px solid #1b4d7e;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;position:relative}
+.fl-id-photo svg{width:84px;height:84px;fill:#24476b}
+.fl-id-photo .badge-overlay{position:absolute;top:5px;right:5px;background:#e09f3e;color:#102338;font-size:9px;font-weight:900;padding:2px 5px;border-radius:4px}
+.fl-id-details{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:12px}
+.fl-id-field{display:flex;flex-direction:column}
+.fl-id-field.full{grid-column:1/-1}
+.fl-id-lbl{font-size:9px;font-weight:800;color:#466380;text-transform:uppercase;letter-spacing:.6px}
+.fl-id-val{font-weight:800;color:#0b1d30;font-size:13px}
+.fl-id-val.lic-num{color:#b8292f;font-family:monospace;font-size:15px;letter-spacing:1px}
+.fl-id-val.name-big{font-size:16px;text-transform:uppercase;letter-spacing:.4px;color:#0a2239}
+.fl-id-footer{background:#123a6314;padding:8px 16px;border-top:1px dashed #7a9ec0;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#1b446b}
+.fl-sig{font-family:'Brush Script MT',cursive,serif;font-size:18px;color:#102338;font-style:italic}
+
+/* Self-contained vector department marks */
+.brand-seal{width:44px;height:44px;flex:0 0 44px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#f5f0dc 0 43%,#c7a85b 44% 49%,#18314a 50% 100%);border:1px solid #d7c27c;box-shadow:0 3px 10px #0008}
+.brand-seal svg{width:29px;height:29px}
+.dept-mark{position:absolute;z-index:1;left:50%;bottom:22px;transform:translateX(-50%);width:min(76%,260px);height:54%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;pointer-events:none;opacity:.98}
+.dept-mark svg{width:100%;height:calc(100% - 20px);max-height:230px;overflow:visible;filter:drop-shadow(0 9px 14px #0009)}
+.dept-mark span{font-size:10px;letter-spacing:1.8px;font-weight:850;color:#d9e1ee;text-align:center;text-transform:uppercase;text-shadow:0 2px 5px #000}
+.dept-card.tall .dept-mark{width:70%;height:58%}
+.dept-mini .dept-mark{left:auto;right:12px;bottom:10px;transform:none;width:30%;height:70%;gap:3px;opacity:.82}
+.dept-mini .dept-mark svg{height:calc(100% - 14px);max-height:86px}
+.dept-mini .dept-mark span{font-size:8px;letter-spacing:1px}
+@media(max-width:1050px){.span-3{grid-column:span 6}.dept-layout{grid-template-columns:1fr 1fr 1.1fr;min-height:420px}.dept-card{min-height:420px}.dept-card:nth-child(4),.dept-card:nth-child(5){display:none}.dept-stack{grid-column:3;grid-row:1}.span-8{grid-column:span 12}.span-4{grid-column:span 6}}
+@media(max-width:700px){.span-3{grid-column:span 12}header{padding:0 12px}.header-right .tag{display:none}.main{padding:12px}.chooser{padding:13px}.chooser-title{font-size:20px}.dept-layout{grid-template-columns:1fr 1fr;min-height:0}.dept-card{min-height:310px}.dept-card:nth-child(4),.dept-card:nth-child(5){display:flex}.dept-stack{grid-column:1/-1;grid-row:auto;grid-template-columns:1fr 1fr;grid-template-rows:auto}.dept-mini{min-height:130px}.dept-card h2{font-size:19px}.dept-card p{font-size:13px}.chooser-footer{align-items:stretch;flex-direction:column}.radio-toggle{align-self:flex-end}aside{width:58px;padding:10px 5px}.nav{justify-content:center;padding:12px 4px}.nav-text,.nav-label{display:none}.main-app{width:calc(100% - 58px);padding:13px}.span-6,.span-4{grid-column:span 12}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.dept-mark{height:48%;width:64%;bottom:14px}.dept-card.tall .dept-mark{height:50%;width:62%}.dept-mini .dept-mark{width:27%;height:64%}.dept-mini .dept-mark span{font-size:7px}}
+</style></head><body>
+<header>
+  <div class="brand">
+    <div class="brand-seal" role="img" aria-label="Miami-inspired city emblem">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5v13 M20 10Q9 1 5 8q7 8 15 8 M20 10Q31 1 35 8q-7 8-15 8 M20 17Q11 11 8 17q5 6 12 6 M20 17Q29 11 32 17q-5 6-12 6" fill="none" stroke="#1c3e61" stroke-width="2.2" stroke-linecap="round"/><path d="M8 31h24M11 30V25h5v5M18 30V22h5v8M25 30V26h4v4" fill="none" stroke="#1c3e61" stroke-width="2"/></svg>
+    </div>
+    <div>Miami CAD<div class="small muted" style="font-weight:500">Florida Roleplay CAD</div></div>
+  </div>
+  <div class="header-right">
+    <span class="tag amber">UNOFFICIAL ROLEPLAY SYSTEM · NOT 911</span>
+    <span id="userLabel" class="small muted">Not signed in</span>
+    <button class="ghost" onclick="goHome()">⌂ Departments</button>
+  </div>
+</header>
+
+<!-- OPENS DIRECTLY TO MAIN DEPARTMENT SELECTION -->
+<div id="departmentScreen" class="main">
+  <section class="chooser">
+    <h1 class="chooser-title">Choose where you're headed.</h1>
+    <div class="dept-layout">
+      <button class="dept-card" onclick="selectDept('civilian')">
+        <div class="copy">
+          <h2>Civilian</h2>
+          <p>Your character, licenses, vehicles, wallet, businesses and the shop.</p>
+          <span class="enter">Enter →</span>
+        </div>
+        <div class="dept-mark" aria-label="Miami Civilian roleplay department emblem">
+          <svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#24435d" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M80 34 L80 18 M80 29 Q55 9 43 21 Q58 38 80 39 M80 29 Q105 9 117 21 Q102 38 80 39 M80 39 L80 67 M80 51 Q62 39 52 48 Q63 62 80 63 M80 51 Q98 39 108 48 Q97 62 80 63" fill="none" stroke="#d9bd70" stroke-width="5" stroke-linecap="round"/><path d="M53 105h54v-31H53z M63 105V84h10v21 M86 84h10v21" fill="none" stroke="#d9bd70" stroke-width="4"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">MIA</text></svg>
+          <span>Miami Civilian</span>
+        </div>
+      </button>
+
+      <button class="dept-card" onclick="selectDept('leo')">
+        <div class="copy">
+          <h2>Law Enforcement</h2>
+          <p>Police, sheriff and highway patrol: the MDT, calls, records and reports.</p>
+          <span class="enter">Enter →</span>
+        </div>
+        <div class="dept-mark" aria-label="Miami-Dade Law Enforcement roleplay department emblem">
+          <svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#183a5c" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M80 38 L89 63 L116 63 L94 79 L102 105 L80 89 L58 105 L66 79 L44 63 L71 63Z" fill="#d9bd70" stroke="#fff" stroke-width="2"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">MDSO</text></svg>
+          <span>Miami-Dade Law Enforcement</span>
+        </div>
+      </button>
+
+      <div class="dept-stack">
+        <button class="dept-mini" onclick="selectDept('dispatch')">
+          <div><h3>Dispatch</h3><p>Take 911 roleplay calls, assign units and keep the radio moving.</p><div class="lock">◉ Available</div></div>
+          <div class="dept-mark" aria-label="Communications roleplay department emblem"><svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#183a5c" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M53 52 L108 35 M59 56h43v52H59z M68 65h25 M68 76h25 M68 88h12" fill="none" stroke="#d9bd70" stroke-width="5" stroke-linecap="round"/><path d="M111 62q18 18 0 36 M120 52q28 28 0 56" fill="none" stroke="#d9bd70" stroke-width="4" stroke-linecap="round"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">911</text></svg><span>Communications</span></div>
+        </button>
+
+        <button class="dept-mini" onclick="selectDept('judicial')">
+          <div><h3>Judicial</h3><p>Court cases, the docket, warrants and lawsuits.</p><div class="lock">◉ Available</div></div>
+          <div class="dept-mark" aria-label="Judicial Circuit roleplay department emblem"><svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#243b55" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M80 37v67 M58 50h44 M65 50l-17 32h34z M95 50L78 82h34z M59 105h42" fill="none" stroke="#d9bd70" stroke-width="5" stroke-linejoin="round"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">11TH</text></svg><span>Judicial Circuit</span></div>
+        </button>
+
+        <button class="dept-mini" onclick="selectDept('government')">
+          <div><h3>Government</h3><p>City hall, laws and the public budget.</p><div class="lock">◉ Available</div></div>
+          <div class="dept-mark" aria-label="County Government roleplay department emblem"><svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#243b55" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M42 58L80 35l38 23z M49 63h62 M54 63v38 M69 63v38 M91 63v38 M106 63v38 M45 105h70" fill="none" stroke="#d9bd70" stroke-width="5" stroke-linejoin="round"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">MDC</text></svg><span>County Government</span></div>
+        </button>
+
+        <button class="dept-mini" onclick="selectDept('dmv')">
+          <div><h3>DMV</h3><p>Licenses, registrations and plates.</p><div class="lock">◉ Available</div></div>
+          <div class="dept-mark" aria-label="Motor Vehicles roleplay department emblem"><svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#24435d" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><rect x="42" y="48" width="76" height="55" rx="7" fill="none" stroke="#d9bd70" stroke-width="5"/><circle cx="62" cy="69" r="9" fill="none" stroke="#d9bd70" stroke-width="4"/><path d="M79 65h26 M79 77h26 M54 89h51" stroke="#d9bd70" stroke-width="4" stroke-linecap="round"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">FLHSMV</text></svg><span>Motor Vehicles</span></div>
+        </button>
+      </div>
+
+      <button class="dept-card tall" onclick="selectDept('fire')">
+        <div class="copy">
+          <h2>Fire Department</h2>
+          <p>Fire and EMS: incidents, patients and medical reports.</p>
+          <span class="enter">Enter →</span>
+        </div>
+        <div class="dept-mark" aria-label="Fire Rescue roleplay department emblem">
+          <svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#6b2630" stroke="#e7c36c" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#e7c36c" stroke-width="4"/><path d="M82 31c8 21-8 24 5 40 5-9 11-14 12-25 22 24 21 48 4 61-17 13-47 5-52-17-4-17 7-31 18-43-1 15 4 20 9 24 9-15-3-25 4-40z" fill="#e7c36c" stroke="#fff" stroke-width="2"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">MDFR</text></svg>
+          <span>Fire Rescue</span>
+        </div>
+      </button>
+
+      <button class="dept-card" onclick="selectDept('dot')">
+        <div class="copy">
+          <h2>DOT</h2>
+          <p>Tows, impounds and keeping the roads clear.</p>
+          <span class="enter">Enter →</span>
+        </div>
+        <div class="dept-mark" aria-label="Transportation roleplay department emblem">
+          <svg viewBox="0 0 160 160" role="img" aria-hidden="true"><circle cx="80" cy="80" r="72" fill="#24435d" stroke="#d9bd70" stroke-width="5"/><circle cx="80" cy="80" r="61" fill="none" stroke="#e7e9ed" stroke-width="1.7" stroke-dasharray="3 4"/><path d="M80 12v10 M80 138v10 M12 80h10 M138 80h10" stroke="#d9bd70" stroke-width="4"/><path d="M58 111l12-75h20l12 75 M80 43v13 M80 68v13 M80 93v13" fill="none" stroke="#d9bd70" stroke-width="6" stroke-linecap="round"/><text x="80" y="128" text-anchor="middle" fill="#fff" font-size="12" font-weight="900" letter-spacing="2">T&PW</text></svg>
+          <span>Transportation</span>
+        </div>
+      </button>
+    </div>
+
+    <div class="chooser-footer">
+      <button class="quick-link" onclick="selectDept('leo')">↗ &nbsp; Quick open: MDT · Florida Highway Patrol →</button>
+      <button id="radioToggle" class="radio-toggle" onclick="toggleRadio()">◉ &nbsp; Radio <span class="radio-dot"></span></button>
+    </div>
+  </section>
+</div>
+
+<div id="appShell" class="shell hidden">
+  <aside id="sidebarNav"></aside>
+  <main class="main-app" id="mainContent"></main>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script>
+const KEY='miamiCad_clean_v3';
+const departments=[
+  {id:'civilian',name:'Civilian',needsCallsign:false},
+  {id:'leo',name:'Law Enforcement',needsCallsign:true},
+  {id:'dispatch',name:'Dispatch',needsCallsign:false},
+  {id:'judicial',name:'Judicial',needsCallsign:false},
+  {id:'government',name:'Government',needsCallsign:false},
+  {id:'dmv',name:'DMV',needsCallsign:false},
+  {id:'fire',name:'Fire Department',needsCallsign:true},
+  {id:'dot',name:'Department of Transportation',needsCallsign:true}
+];
+
+const blankDB=()=>({calls:[],
